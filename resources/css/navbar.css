@@ -1,0 +1,29 @@
+.bg-nav {
+
+    background: var(--bg);
+    color: var(--text);
+
+}
+
+.nav-link,
+.navbar-brand {
+    color: var(--text) !important;
+}
+
+.logo-navbar {
+    width: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.me-custom{
+    margin-right: 10rem;
+}
+.dropdown-menu.show {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.dropdown-item {
+    color: var(--text);
+}

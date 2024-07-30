@@ -1,0 +1,29 @@
+@import 'bootstrap';
+@import './masthead.css';
+@import './navbar.css';
+@import './colors.css';
+@import './faqs.css';
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg);
+    color:var(--text)
+}
+.btn:not(.dropdown-toggle ):not(.btn-logout) {
+    background-color: var(--main);
+    border-color: var(--main);
+    color: var(--text)!important;
+}
+
+.btn.show{
+    border-color: var(--bg);
+}
+
+.btn {
+    color: inherit; /* Potrebbe causare problemi se c'è un altro stile */
+}
+
+.bg-footer {
+    background: var(--bg);
+    color: var(--secText);
+}
