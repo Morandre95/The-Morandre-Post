@@ -19,6 +19,9 @@ Route::get('/careers', [PublicController::class, 'careers'])->name('careers');
 //WORK WITH US
 Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name('careers.submit');
 
+//ABOUT US
+Route::get('/about-us', [PublicController::class, 'aboutUs'])->name('about-us');
+
                                     //ARTICLE ROUTES
 
 //INDEX ARTICLES
@@ -79,3 +82,6 @@ Route::get('/faq', [FaqController::class, 'index'])->name('faq.index');
 
 Route::get('/faq/request', [FaqController::class, 'request'])->name('faq.request');
 Route::post('/faq/request/store', [FaqController::class, 'storeRequest'])->name('faq.storeRequest');
+
+                                    //CHANGE LANGUAGE ROUTES
+Route::post('/language/{lang}', [PublicController::class, 'setLanguage'])->name('setLocale');

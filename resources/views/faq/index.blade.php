@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="Faq's">
 
     <div class="container text-center mt-5 pt-5">
         <h1>Frequently Asked Questions</h1>

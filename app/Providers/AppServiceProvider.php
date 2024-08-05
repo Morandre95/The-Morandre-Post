@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Tag;
+use App\Models\Article;
 use App\Models\Category;
 use App\Models\Consoles;
 use Illuminate\Support\Facades\View;
@@ -35,6 +36,10 @@ class AppServiceProvider extends ServiceProvider
         if(Schema::hasTable('consoles')) {
             $consoles =Consoles::all();
             View::share(['consoles' => $consoles]);
+        }
+        if(Schema::hasTable('articles')) {
+            $articles =Article::all();
+            View::share(['articles' => $articles]);
         }
     }
 }

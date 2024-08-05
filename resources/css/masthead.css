@@ -1,10 +1,10 @@
 .masthead {
-    height: 92vh;
+    height: 72vh;
     min-height: 500px;
     background-size:cover;
     background-image: url('/public/images/bg.png');
     background-position: top;
     background-repeat: no-repeat;
     margin-bottom: 3.5rem;
-    margin-top:3.5rem;
+    margin-top: -1.3rem;
 }

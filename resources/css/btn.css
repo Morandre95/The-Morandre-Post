@@ -1,0 +1,38 @@
+.btn {
+    color: inherit; /* Potrebbe causare problemi se c'è un altro stile */
+}
+
+.btn:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc) {
+    background-color: var(--main);
+    border-color: var(--main);
+    color: var(--text)!important;
+}
+
+.btn.show{
+    border-color: var(--bg);
+}
+
+.btn-acc{
+    background-color: var(--acc);
+    border-color: var(--acc);
+}
+
+.btn-acc, .btn-success, .btn-danger{
+    color: var(--text)!important;
+}
+
+/* BTN HOVER */
+.btn-acc:hover{
+    background-color: var(--accHover);
+    border-color: var(--accHover);
+}
+
+.btn:hover:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc) {
+    background-color: var(--mainHover);
+    border-color: var(--mainHover);
+    color: var(--text)!important;
+}
+
+.btn:hover:not(.btn-logout):hover:not(.dropdown-toggle){
+    scale: 1.2;
+}

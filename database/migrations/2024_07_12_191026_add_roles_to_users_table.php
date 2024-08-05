@@ -46,29 +46,7 @@ return new class extends Migration
             'is_writer' => true,
             'is_revisor' => true
 
-        ]);
-        User::create([
-            'name' => 'revisor',
-            'email' => 'revisor@revisor.revisor',
-            'password' => bcrypt('12345678'),
-            'is_revisor' => true,
-        ]);
-        User::create([
-            'name' => 'writer',
-            'email' => 'writer@writer.writer',
-            'password' => bcrypt('12345678'),
-
-            'is_writer' => true,
-        ]);
-        User::create([
-            'name' => 'all',
-            'email' => 'all@all.all',
-            'password' => bcrypt('12345678'),
-            'is_admin' => true,
-            'is_revisor' => true,
-            'is_writer' => true,
-        ]);
-        
+        ]);        
     }
 
     /**
@@ -76,21 +54,17 @@ return new class extends Migration
      */
     public function down(): void
     {
-        User::where('email', 'admin@admin.admin')->delete();
+        // Elimina prima gli utenti creati dalla migrazione, se necessario
+        User::whereIn('email', [
+            'admin@admin.admin',
+            'writer@writer.writer',
+            'revisor@revisor.revisor',
+            'all@all.all'
+        ])->delete();
+
+        // Poi elimina le colonne
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin', 'is_revisor', 'is_writer');
-        });
-        User::where('email', 'revisor@revisor.revisor')->delete();
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin', 'is_revisor', 'is_writer');
-        });
-        User::where('email', 'writer@writer.writer')->delete();
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin', 'is_revisor', 'is_writer');
-        });
-        User::where('email', 'all@all.all')->delete();
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin', 'is_revisor', 'is_writer');
+            $table->dropColumn('name');
         });
     }
 };

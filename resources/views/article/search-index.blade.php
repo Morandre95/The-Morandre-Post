@@ -2,40 +2,41 @@
 title="Search Results"
 >
 
-@if (session('message'))
-    <div class="alert alert-success mt-5">
-        {{ session('message') }}
+<div class="container mt-3 ">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-4">
+            @if (session('message'))
+            <div class="alert alert-success mt-custom-message alert-dismissible fade show" role="alert">
+                {{ session('message') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+        </div>
     </div>
-@endif
+</div>
 
-    <x-masthead
-    h1="The Morandre Post"
-    p="lorem ipsum"
-    />
+    <x-masthead/>
 <div class="container-fluid">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-12 col-md-6">
-            <h1>All Articles for {{ $query }}</h1>
+            <h1 class="text-center mb-4">All Articles for "{{ $query }}"</h1>
         </div>
     </div>
 </div>
 
     <div class="container-fluid">
-        <div class="row justify-content-evenly">
+        <div class="row">
+            <div class="col-12 col-md-12 d-flex flex-wrap">
                 @foreach ($articles as $article)
-                    <div class="col-12 col-md-3">
                         <x-article-card :article="$article"/>
+                        @endforeach
                     </div>
-                    <div>
-                    </div>
-                    
-                    @endforeach
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-1">
-                        <p class="btn btn-info mt-2">Homepage<a href="{{route('homepage')}}"></a></p>
+                    <div class="col-12 d-flex justify-content-center">
+                        <a href="{{route('homepage')}}" class="btn btn-info mt-2">Homepage</a>
                     </div>
                 </div>
             </div>

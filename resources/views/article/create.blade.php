@@ -1,10 +1,17 @@
 <x-layout title="Create Article">
 
-    <x-masthead />
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
+    <x-masthead  />
 
+    @foreach ($errors->all() as $error)
+    <div class="container ">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-3 bg-danger rounded m-3">
+                <li>{{ $error }}</li>
+            </div>
+        </div>
+    </div>
+    @endforeach
+    
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12">
@@ -81,13 +88,9 @@
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor
                         </select>
-                        @error('body')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
                     </div>
                     <div class="mt-3 d-flex justify-content-center flex-column align-items-center">
                         <button type="submit" class="btn btn-primary">Create Article</button>
-                        {{-- <a href="{{route('article.index')}}" class="text-secondary mt-2">Homepage</a> --}}
                     </div>
                 </form>
             </div>

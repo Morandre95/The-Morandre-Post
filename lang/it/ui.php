@@ -9,4 +9,5 @@ return[
     'tags' => 'Tag',
     'work-whit-us' => 'Lavora con noi',
     'search' => 'Cerca',
+    'Work whit Us' => 'Lavora con noi',
 ];

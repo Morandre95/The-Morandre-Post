@@ -1,54 +1,88 @@
 <x-layout title="Admin Dashboard">
 
-    <x-masthead 
-    h1="The Morandre Post"
-    p="Welcome back, Admin {{ Auth::user()->name }}"/>
-
     @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="alert alert-success mt-custom-message alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
         </div>
+    </div>
     @endif
 
-    <div class="container-fluid my-5">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <h2>Requests for administrator role</h2>
+            <div class="col-12 col-md-7">
+                <h2 class="text-center mb-5">Requests for administrator role</h2>
                 <x-request-table :roleRequest="$adminRequests" role="admin" />
+                @if (empty($adminRequests->count() > 0))
+                <div class="container-fluid mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class=" mb-5">No request for administrator role</h3>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            @endif
             </div>
         </div>
     </div>
-    <div class="container-fluid my-5">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <h2>Requests for revisor role</h2>
+            <div class="col-12 col-md-7">
+                <h2 class="text-center mb-5">Requests for revisor role</h2>
                 <x-request-table :roleRequest="$revisorRequests" role="revisor" />
+                @if (empty($revisorRequests->count() > 0))
+                <div class="container-fluid mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class=" mb-5">No request for revisor role</h3>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            @endif
             </div>
         </div>
     </div>
-    <div class="container-fluid my-5">
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <h2>Requests for writer role</h2>
+            <div class="col-12 col-md-7 mb-5">
+                <h2 class="text-center mb-5">Requests for writer role</h2>
                 <x-request-table :roleRequest="$writerRequests" role="writer" />
+                @if (empty($writerRequests->count() > 0))
+                <div class="container-fluid mt-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class=" mb-5">No request for writer role</h3>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            @endif
             </div>
         </div>
     </div>
     <hr>
-
-    <div class="container-fluid my-5">
+{{-- TAGS AND CATEGORIES --}}
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <h2>All tags</h2>
+            <div class="col-12 col-md-7">
+                <h2 class="mb-5">All tags</h2>
                 <x-metainfo-table :metaInfos="$tags" metaType="tag"/>
             </div>
         </div>
     </div>
-    <div class="container-fluid my-5">
+    <hr>
+    <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <h2>All categories</h2>
-                <form action="{{route('admin.storeCategory')}}" method="post" class="w-50 d-flex m-3">
+            <div class="col-12 col-md-7">
+                <h2 class="mb-4">All categories</h2>
+                <form action="{{route('admin.storeCategory')}}" method="post" class="input-md-w d-flex mb-5">
                     @csrf
                     <input type="text" name="name" class="form-control me-2" placeholder="New category name">
                     <button type="submit" class="btn btn-secondary">Add</button>

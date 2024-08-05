@@ -1,22 +1,29 @@
 <x-layout title="Edit Article">
 
-    <x-masthead />
+    <x-masthead  />
 
-    <div class="container-fluid p-5 bg-secondary-subtle text-center">
+    <div class="container-fluid mt-5 text-center">
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-12 mt-5 mt-md-0">
                 <h1>Edit Article</h1>
             </div>
         </div>
     </div>
 
     @if (session('message'))
-        <div class="alert alert-success">
-            {{ session('message') }}
+    <div class="container mt-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4">
+                <div class="alert alert-success mt-custom-message alert-dismissible fade show" role="alert">
+                    {{ session('message') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
         </div>
+    </div>
     @endif
     <div class="container-fluid my-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-8">
                 <form action="{{ route('article.update', $article) }}" method="POST" class="card p-5 shadow"
                     enctype="multipart/form-data">
@@ -47,8 +54,10 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label>Current Image</label>
-                        <img src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" class="w-5 d-flex">
+                        <label class="d-flex justify-content-center">Current Image</label>
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" class="w-5 d-flex">
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">New image</label>
@@ -102,14 +111,18 @@
                     </div>
                     <div class="mt-3 d-flex justify-content-center ">
                         <button type="submit" class="btn btn-primary">Edit Article</button>
-
-                        <a href="{{ route('homepage') }}" class="text-secondary mt-2">Homepage</a>
                     </div>
                 </form>
                 <form action="{{ route('article.destroy', $article) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete Article</button>
+                    <div class="container mt-4">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-6 d-flex justify-content-center">
+                                <button type="submit" class="btn btn-danger">Delete Article</button>
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

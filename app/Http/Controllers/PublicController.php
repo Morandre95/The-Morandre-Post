@@ -13,12 +13,17 @@ class PublicController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['homepage']]);
+        $this->middleware('auth', ['except' => ['homepage', 'aboutUs',]]);
     }
     public function homepage()
     {
         $articles = Article::where('is_Accepted', true)->orderBy('created_at', 'desc')->take(4)->get();
         return view('welcome', compact('articles'));
+    }
+
+    public function aboutUs()
+    {
+        return view('about-us');
     }
 
     public function careers()

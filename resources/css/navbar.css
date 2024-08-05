@@ -1,3 +1,7 @@
+.mb-navbar{
+   margin-bottom: 5rem;
+}
+
 .bg-nav {
 
     background: var(--bg);
@@ -16,8 +20,30 @@
     padding: 0;
 }
 
+.logo-navbar:hover {
+scale:1.2;
+}
+
+.navbar-toggler-icon {
+    background-image: none;
+}
+
+.navbar-toggler {
+    border: var(--text) solid 1px !important;
+    right: 12px;
+    top: 15px;
+}
+
+.navbar-toggler:hover {
+    scale:1.2;
+}
+
+.bi-list{
+    color: var(--text);
+}
+
 .me-custom{
-    margin-right: 10rem;
+    margin-right: 9rem;
 }
 .dropdown-menu.show {
     background: var(--bg);
@@ -26,4 +52,14 @@
 
 .dropdown-item {
     color: var(--text);
+}
+
+.nav-link:hover{
+    background-color: var(--text);
+    color: var(--bg) !important;
+}
+
+.dropdown-toggle:hover{
+    background-color: var(--text);
+    color: var(--bg) !important;
 }

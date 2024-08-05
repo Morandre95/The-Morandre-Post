@@ -6,10 +6,12 @@ use App\Models\Tag;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Category;
+use App\Jobs\ResizeImage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ArticleController extends Controller
@@ -22,6 +24,7 @@ class ArticleController extends Controller
      * Display a listing of the resource.
      */
     public function index()
+    
     {
         $articles = Article::where('is_accepted', TRUE)->orderBy('created_at', 'desc')->get();
         return view('article.index',compact('articles'));
@@ -43,42 +46,42 @@ class ArticleController extends Controller
         public function store(Request $request)
         {
             $request->validate([
-            'title' => 'required|unique:articles|min:5',
-            'platform' => 'required',
-            'body' => 'required|min:10',
-            'image' => 'required|image',
-            'category' => 'required',
-            'tags' => 'required',
-            'rating' => 'required|integer|between:1,5',
-        ]);
-
-        $article = Article::Create([
-            'title' => $request->title,
-            'platform_id' => $request->platform,
-            'body' => $request->body,
-            'image' => $request->file('image')->store('public/images'),
-            'category_id' => $request->category,
-            'user_id' => auth()->user()->id,
-            'slug' => Str::slug($request->title),
-            'rating' => $request->rating,
-        ]);
-
-        $tags = explode(',', $request->tags);
-        
-        foreach ($tags as $i => $tag) {
-            $tags[$i] = trim($tag);
-        }
-
-        foreach ($tags as $tag) {
-            $newTag = Tag::updateOrCreate([
-                'name' => strtolower($tag)
+                'title' => 'required|unique:articles|min:5',
+                'platform' => 'required',
+                'body' => 'required|min:10|max:2100',
+                'image' => 'required|image',
+                'category' => 'required',
+                'tags' => 'required',
+                'rating' => 'required|integer|between:1,5',
             ]);
-            $article->tags()->attach($newTag);
+        
+            $article = Article::Create([
+                'title' => $request->title,
+                'platform_id' => $request->platform,
+                'body' => $request->body,
+                'image' => $request->file('image')->store('public/images'),
+                'category_id' => $request->category,
+                'user_id' => auth()->user()->id,
+                'slug' => Str::slug($request->title),
+                'rating' => $request->rating,
+            ]);
+        
+            $tags = explode(',', $request->tags);
+            
+            foreach ($tags as $i => $tag) {
+                $tags[$i] = trim($tag);
+            }
+        
+            foreach ($tags as $tag) {
+                $newTag = Tag::updateOrCreate([
+                    'name' => strtolower($tag)
+                ]);
+                $article->tags()->attach($newTag);
+            }
+        
+            return redirect(route('homepage'))
+                ->with('message', 'Article created successfully');
         }
-
-        return redirect(route('homepage'))
-            ->with('message', 'Article created successfully');
-    }
 
     /**
      * Display the specified resource.
@@ -98,7 +101,7 @@ class ArticleController extends Controller
             return view('article.edit', compact('article'));
         }
 
-            return redirect->route('homepage')->with('alert', 'You are not allowed to edit this article');
+            return redirect()->route('homepage')->with('alert', 'You are not allowed to edit this article');
     }
 
     /**
@@ -109,7 +112,7 @@ class ArticleController extends Controller
         $request->validate([
             'title' => 'required|min:5|unique:articles,title,' . $article->id,
             'platform' => 'required',
-            'body' => 'required|min:10',
+            'body' => 'required|min:10|max:2100',
             'image' => '',
             'category' => 'required',
             'tags' => 'required',
@@ -145,7 +148,10 @@ class ArticleController extends Controller
         }
         $article->tags()->sync($newTags);
 
-        return redirect(route('writer.dashboard'))->with('message', 'Article updated successfully');
+        $article->is_accepted = null;
+        $article->save();
+
+        return redirect(route('writer.dashboard'))->with('message', 'Article updated successfully and under review');
     }
 
     /**

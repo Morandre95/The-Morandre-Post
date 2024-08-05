@@ -3,10 +3,16 @@
     --sec: #FF4136;
     --acc:#FFC107;
 
+    /* HOVER */
+    --mainHover: #005bbc ;
+    --accHover:#c29100;
+
+    /* BACKGROUND */
     --bg:#2D2D2D;
     --secBg:#474646;
-    
+
+    /* TEXT */
     --text: #ffffff;
-    --secText:#B0B0B0;
+    --secText:#B0B0B0;    
 }
 
