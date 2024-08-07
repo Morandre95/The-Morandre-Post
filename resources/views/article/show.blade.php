@@ -1,4 +1,4 @@
-<x-layout title="Show Article">
+<x-layout title="Show Article">6
 
     @if (session('message'))
     <div class="container mt-3">
@@ -31,9 +31,9 @@
                         <p class="card-text">{{ $article->consoles->name }}</p>
                         <p class="small text-muted my-0">
                         @if ($article->category)
-                            <p class="fs-5">Category: <a href="{{ route('article.byCategory', $article->category) }}" class="text-capitalize text-muted">{{ $article->category->name }}</a></p>
+                            <p class="fs-5">{{__('ui.Category')}}: <a href="{{ route('article.byCategory', $article->category) }}" class="text-capitalize text-muted">{{ $article->category->name }}</a></p>
                         @else 
-                            <p class="fs-5">Uncategorized</p>
+                            <p class="fs-5">{{__('ui.Uncategorized')}}</p>
                         @endif
                         <p class="text-muted my-0">
                             @foreach ($article->tags as $tag)
@@ -42,7 +42,7 @@
                         </p>
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
-                        <p>Create at: {{ $article->created_at->format('d/m/Y') }} <br> By: <a class="card-by-show" href="{{ route('article.byUser', $article->user) }}">{{ $article->user->name }}</a></p>
+                        <p>{{__('ui.Create at')}}: {{ $article->created_at->format('d/m/Y') }} <br> By: <a class="card-by-show" href="{{ route('article.byUser', $article->user) }}">{{ $article->user->name }}</a></p>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                                 @csrf
                                 <button type="submit" class="btn btn-success">Accept</button>
                             </form>
-                                <a href="{{ route('article.index') }}" class="btn btn-info m-0">Return All Articles</a>
+                                <a href="{{ route('article.index') }}" class="btn btn-info m-0">{{__('ui.All Articles')}}</a>
                             <form action="{{ route('revisor.rejectArticle', $article) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">Reject</button>

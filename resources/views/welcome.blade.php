@@ -31,7 +31,7 @@
                     <h1 class="text-center mb-5">{{__('ui.Latest Articles')}}</h1>
                 </div>
                 @else
-                <h1 class="text-center mt-5 p-5">{{__('ui.No articles yet')}} @if(Auth::check() && Auth::user()->is_writer), <a href="{{ route('article.create') }}"> <button class="btn btn-custom p-1 mx-1 mt-3 mt-md-0 fs-3"> create it now</button></a>@endif</h1>
+                <h1 class="text-center mt-5 p-5">{{__('ui.No articles yet')}} @if(Auth::check() && Auth::user()->is_writer), <a href="{{ route('article.create') }}"> <button class="btn btn-custom p-1 mx-1 mt-3 mt-md-0 fs-3"> {{__('ui.create it now')}}</button></a>@endif</h1>
             </div>
         </div>
     @endif

@@ -13,7 +13,7 @@
                     <div class="dropdown">
                         <button class="btn dropdown-toggle pt-2" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Hi, {{ Auth::user()->name }}
+                            {{__('ui.Hi')}}, {{ Auth::user()->name }}
                         </button>
                         <ul class="dropdown-menu">
                             <li>
@@ -58,12 +58,12 @@
             </ul>
         </div>
         <div>
-            <div class="dropdown mx-2">
+            <div class="dropdown mx-2 mobileLanguage">
                 <button class="btn dropdown-toggle pt-2" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 {{__('ui.Languages')}}
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu mt-language">
                 <li><x-_locale lang="it"/></li>
                 <li><x-_locale lang="fr"/></li>
                 <li><x-_locale lang="en"/></li>

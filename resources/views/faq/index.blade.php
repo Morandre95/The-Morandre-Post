@@ -1,7 +1,7 @@
 <x-layout title="Faq's">
 
     <div class="container text-center mt-5 pt-5">
-        <h1>Frequently Asked Questions</h1>
+        <h1>{{__('ui.Frequently Asked Questions')}}</h1>
     </div>
         <div class="container">
             <div class="row justify-content-center">
@@ -20,10 +20,10 @@
         <div class="container-fluid mt-5">
             <div class="row ">
                 <div class="col-12 d-flex flex-column align-items-center">
-                    <h2>Do You Have Any Questions?</h2>
+                    <h2>{{__('ui.Do You Have Any Questions?')}}</h2>
                     <form action="{{route('faq.request')}}" method="GET">
                         @csrf
-                        <button type="submit " href="{{route('faq.request')}}" class="btn btn-primary mt-4">Request Form</button>
+                        <button type="submit " href="{{route('faq.request')}}" class="btn btn-primary mt-4">{{__('ui.Request Form')}}</button>
                     </form>
 
                 </div>

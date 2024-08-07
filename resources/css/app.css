@@ -4,6 +4,7 @@
 @import './colors.css';
 @import './faqs.css';
 @import './btn.css';
+@import './language.css';
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 body {
@@ -30,10 +31,7 @@ a{
 
 }
 
-.letter-spacing {
-    letter-spacing: 0.8em;
-}
-
+/*FOOTER*/
 .bg-footer {
     background: var(--bg);
     color: var(--secText);
@@ -48,7 +46,7 @@ a{
 .mt-custom-message {
     margin-top: 5rem;
 }
-
+    
 /*PLACEHOLDER FORM */
 @media (min-width: 768px) {
     .input-md-w {

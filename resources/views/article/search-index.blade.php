@@ -19,7 +19,7 @@ title="Search Results"
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-12 col-md-6">
-            <h1 class="text-center mb-4">All Articles for "{{ $query }}"</h1>
+            <h1 class="text-center mb-4">{{__('ui.All Articles for')}} "{{ $query }}"</h1>
         </div>
     </div>
 </div>
@@ -36,7 +36,7 @@ title="Search Results"
             <div class="container-fluid">
                 <div class="row justify-content-center">
                     <div class="col-12 d-flex justify-content-center">
-                        <a href="{{route('homepage')}}" class="btn btn-info mt-2">Homepage</a>
+                        <a href="{{route('homepage')}}" class="btn btn-info mt-2">{{__('ui.Homepage')}}</a>
                     </div>
                 </div>
             </div>

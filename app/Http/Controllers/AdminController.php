@@ -32,6 +32,23 @@ class AdminController extends Controller
         $user->save();
         return redirect(route('admin.dashboard'))->with('message', "You made $user->name writer");
     }
+    //REJECTOR METHODS
+    public function rejectAdmin(User $user){
+        $user->is_admin = false;
+        $user->save();
+        return redirect(route('admin.dashboard'))->with('message', "You reject $user->name as administrator");
+    }
+    public function rejectRevisor(User $user){
+        $user->is_revisor = false;
+        $user->save();
+        return redirect(route('admin.dashboard'))->with('message', "You reject $user->name as revisor");
+    }
+    public function rejectWriter(User $user){
+        $user->is_writer = false;
+        $user->save();
+        return redirect(route('admin.dashboard'))->with('message', "You reject $user->name as writer");
+    }
+
     public function editTag(Request $request, Tag $tag){
         $request->validate([
             'name' => 'required|unique:tags',

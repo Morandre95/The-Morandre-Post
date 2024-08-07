@@ -43,7 +43,7 @@ scale:1.2;
 }
 
 .me-custom{
-    margin-right: 9rem;
+    margin-right: 2.5rem;
 }
 .dropdown-menu.show {
     background: var(--bg);
@@ -62,4 +62,8 @@ scale:1.2;
 .dropdown-toggle:hover{
     background-color: var(--text);
     color: var(--bg) !important;
+}
+
+.letter-spacing {
+    letter-spacing: 0.8em;
 }

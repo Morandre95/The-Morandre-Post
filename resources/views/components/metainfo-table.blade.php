@@ -1,11 +1,11 @@
 <table class="table">
   <thead class="table-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Tag name</th>
-      <th scope="col">Q.ty of linked items</th>
-      <th scope="col">Refresh</th>
-      <th scope="col">Delete</th>
+      <th scope="col">{{__('ui.Id')}}</th>
+      <th scope="col">{{__('ui.Tag name')}}</th>
+      <th scope="col">{{__('ui.Q.ty of linked items')}}</th>
+      <th scope="col">{{__('ui.Refresh')}}</th>
+      <th scope="col">{{__('ui.Delete')}}</th>
     </tr>
   </thead>
   <tbody>
@@ -20,15 +20,15 @@
           <form action="{{route('admin.editTag', ['tag' => $metaInfo])}}" method="POST">
             @csrf
             @method('PUT')
-            <input type="text" name="name" placeholder="New tag name" class="form-control input-md-w d-inline">
-            <button type="submit" class="btn btn-secondary mt-2 mt-md-0">Refresh</button>
+            <input type="text" name="name" placeholder="{{__('ui.New tag name')}}" class="form-control input-md-w d-inline">
+            <button type="submit" class="btn btn-secondary mt-2 mt-md-0">{{__('ui.Refresh')}}</button>
           </form>
       </td>
       <td>
         <form action="{{route('admin.deleteTag', ['tag' => $metaInfo])}}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger mt-5 mt-md-0">Delete</button>
+            <button type="submit" class="btn btn-danger mt-5 mt-md-0">{{__('ui.Delete')}}</button>
           </form>
         </td>
       @endif
@@ -38,15 +38,15 @@
         <form action="{{route('admin.editCategory', ['category' => $metaInfo])}}" method="POST">
           @csrf
           @method('PUT')
-          <input type="text" value="{{$metaInfo->name}}" name="name" placeholder="New category name" class="form-control input-md-w d-inline">
-          <button type="submit" class="btn btn-secondary mt-2 mt-md-0">Refresh</button>
+          <input type="text" value="{{$metaInfo->name}}" name="name" placeholder="{{__('ui.New category name')}}" class="form-control input-md-w d-inline">
+          <button type="submit" class="btn btn-secondary mt-2 mt-md-0">{{__('ui.Refresh')}}</button>
         </form>
      </td>
      <td>
       <form action="{{route('admin.deleteCategory', ['category' => $metaInfo])}}" method="POST">
           @csrf
           @method('DELETE')
-          <button type="submit" class="btn btn-danger mt-5 mt-md-0">Delete</button>
+          <button type="submit" class="btn btn-danger mt-5 mt-md-0">{{__('ui.Delete')}}</button>
       </form>
      </td>
       @endif

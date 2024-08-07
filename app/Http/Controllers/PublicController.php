@@ -13,7 +13,7 @@ class PublicController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['homepage', 'aboutUs',]]);
+        $this->middleware('auth', ['except' => ['homepage', 'aboutUs', 'setLanguage']]);
     }
     public function homepage()
     {
