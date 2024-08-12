@@ -5,7 +5,7 @@
     <div class="container-fluid mt-5 text-center">
         <div class="row justify-content-center">
             <div class="col-12 mt-5 mt-md-0">
-                <h1>Edit Article</h1>
+                <h1>{{__('ui.Edit Article')}}</h1>
             </div>
         </div>
     </div>
@@ -30,7 +30,7 @@
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
+                        <label for="title" class="form-label">{{__('ui.Title')}}</label>
                         <input type="text" class="form-control" id="title" name="title"
                             value="{{ $article->title }}">
                         @error('title')
@@ -38,10 +38,10 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="platform" class="form-label">Console</label>
+                        <label for="platform" class="form-label">{{__('ui.Console')}}</label>
                         <div class="dropdown-wrapper">
                             <select class="form-control custom-select" id="platform" name="platform">
-                                <option selected disable>Select Console</option>
+                                <option selected disable>{{__('ui.Select Console')}}</option>
                                 @foreach ($consoles as $console)
                                     <option value="{{ $console->id }}"
                                         {{ $article->platform_id == $console->id ? 'selected' : '' }}>
@@ -54,23 +54,23 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label class="d-flex justify-content-center">Current Image</label>
+                        <label class="d-flex justify-content-center">{{__('ui.Current Image')}}</label>
                         <div class="d-flex justify-content-center">
                             <img src="{{ Storage::url($article->image) }}" alt="{{ $article->title }}" class="w-5 d-flex">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">New image</label>
+                        <label for="image" class="form-label">{{__('ui.Replace Image')}}</label>
                         <input type="file" class="form-control" id="image" name="image">
                         @error('image')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label">Category</label>
+                        <label for="category" class="form-label">{{__('ui.Category')}}</label>
                         <div class="dropdown-wrapper">
                             <select class="form-control custom-select" id="category" name="category">
-                                <option disabled>Select Category</option>
+                                <option disabled>{{__('ui.Select Category')}}</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ $article->category_id == $category->id ? 'selected' : '' }}>
@@ -83,23 +83,23 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="tags" class="form-label">Tags</label>
+                        <label for="tags" class="form-label">{{__('ui.Tags')}}</label>
                         <input type="text" class="form-control" id="tags" name="tags"
                             value="{{ $article->tags->implode('name', ',') }}">
-                        <span class="small text-muted fst-italic"> Separate tags with commas</span>
+                        <span class="small text-muted fst-italic"> {{__('ui.Separate tags with commas')}}</span>
                         @error('tags')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="body" class="form-label">Text</label>
+                        <label for="body" class="form-label">{{__('ui.Description')}}</label>
                         <textarea class="form-control" id="body" name="body" cols="30" rows="7">{{ $article->body }}"</textarea>
                         @error('body')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="rating">Rating:</label>
+                        <label for="rating">{{__('ui.Rating')}}:</label>
                         <select name="rating" id="rating">
                             @for ($i = 1; $i <= 5; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
@@ -110,7 +110,7 @@
                         @enderror
                     </div>
                     <div class="mt-3 d-flex justify-content-center ">
-                        <button type="submit" class="btn btn-primary">Edit Article</button>
+                        <button type="submit" class="btn btn-primary">{{__('ui.Edit Article')}}</button>
                     </div>
                 </form>
                 <form action="{{ route('article.destroy', $article) }}" method="POST" class="d-inline">
@@ -119,7 +119,7 @@
                     <div class="container mt-4">
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-6 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-danger">Delete Article</button>
+                                <button type="submit" class="btn btn-danger">{{__('ui.Delete Article')}}</button>
                             </div>
                         </div>
                     </div>

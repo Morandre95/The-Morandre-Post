@@ -17,7 +17,7 @@
     <div class="container-fluid text-center">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1>Category "{{ $category->name }}"</h1>
+                <h1>{{__('ui.Filter by Category')}} "{{ $category->name }}"</h1>
             </div>
         </div>
     </div>
@@ -34,11 +34,11 @@
                             <p class="card-text">{{ $article->consoles->name }}</p>
                             <p class="small text-muted my-0">
                                 @if ($article->category)
-                                    <p class="text-muted small">Category: <a
+                                    <p class="text-muted small">{{__('ui.Category')}}: <a
                                             href="{{ route('article.byCategory', $article->category) }}"
                                             class="text-capitalize text-muted">{{ $article->category->name }}"</a></p>
                                 @else
-                                    <p class="text-muted small">Uncategorized</p>
+                                    <p class="text-muted small">{{__('ui.Uncategorized')}}</p>
                                 @endif
                             <p class="text-muted my-0">
                                 @foreach ($article->tags as $tag)
@@ -50,7 +50,7 @@
                             <p>Create at : {{ $article->created_at->format('d/m/Y') }} <br> By : <a class="card-by-show"
                                     href="{{ route('article.byUser', $article->user) }}">{{ $article->user->name }}</a>
                             </p>
-                            <a href="{{ route('article.show', $article) }}" class="btn btn-primary">Read</a>
+                            <a href="{{ route('article.show', $article) }}" class="btn btn-primary">{{__('ui.Read')}}</a>
 
                         </div>
                     </div>
@@ -61,7 +61,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-12 d-flex justify-content-center">
-                <a href="{{ route('homepage') }}" class="btn btn-info">Homepage</a>
+                <a href="{{ route('homepage') }}" class="btn btn-info">{{__('ui.Homepage')}}</a>
             </div>
         </div>
     </div>

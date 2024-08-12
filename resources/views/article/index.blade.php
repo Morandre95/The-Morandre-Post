@@ -18,10 +18,10 @@
         <div class="container-fluid mt-5">
             <div class="row">
                 <div class="col-12 mt-5 mt-md-0">
-                    <h1 class="text-center mb-5">All Articles</h1>
+                    <h1 class="text-center mb-5">{{__('ui.All Articles')}}</h1>
                 </div>
                 @else
-                <h1 class="text-center mt-5 p-5">No articles yet @if(Auth::check() && Auth::user()->is_writer), <a href="{{ route('article.create') }}"> <button class="btn btn-custom p-1 mx-1 mt-3 mt-md-0 fs-3"> create it now</button></a>@endif</h1>
+                <h1 class="text-center mt-5 p-5">{{__('ui.No articles yet')}} @if(Auth::check() && Auth::user()->is_writer), <a href="{{ route('article.create') }}"> <button class="btn btn-custom p-1 mx-1 mt-3 mt-md-0 fs-3"> {{__('ui.create it now')}}</button></a>@endif</h1>
             </div>
         </div>
     @endif
@@ -38,7 +38,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <a href="{{ route('homepage') }}" class="btn btn-info mt-2">Homepage</a>
+                <a href="{{ route('homepage') }}" class="btn btn-info mt-2">{{__('ui.Homepage')}}</a>
             </div>
         </div>
     </div>
