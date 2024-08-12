@@ -1,8 +1,8 @@
 .btn {
-    color: inherit; /* Potrebbe causare problemi se c'è un altro stile */
+    color: inherit;
 }
 
-.btn:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc) {
+.btn:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc):not(.lang) {
     background-color: var(--main);
     border-color: var(--main);
     color: var(--text)!important;
@@ -27,7 +27,7 @@
     border-color: var(--accHover);
 }
 
-.btn:hover:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc) {
+.btn:hover:not(.dropdown-toggle ):not(.btn-logout):not(.btn-success):not(.btn-danger):not(.btn-acc):not(.lang){
     background-color: var(--mainHover);
     border-color: var(--mainHover);
     color: var(--text)!important;

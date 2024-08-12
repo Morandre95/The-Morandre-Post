@@ -1,0 +1,16 @@
+.dropdown-menu {
+    --bs-dropdown-min-width: none; 
+    position: absolute;
+    left: 25%!important;
+}
+
+.mt-language {
+    margin-top: 0.65rem!important;
+
+}
+
+@media (max-width: 768px) {
+    .mobileLanguage {
+        left: -75%;
+    }   
+}
